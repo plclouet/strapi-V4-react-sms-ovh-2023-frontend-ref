@@ -1,0 +1,15 @@
+* {
+    margin:0px;
+    padding:0px;
+    box-sizing: border-box;
+    }
+  
+    .nav_color{
+        background-color: #0a3d62;
+    }
+  
+    @media only screen and (max-width: 767px) {
+   .navbar button {
+     font-size: 12px;
+   }
+    }
