@@ -4,10 +4,13 @@ import React, {useState} from 'react';
 import axios from 'axios';
 import { API_URL } from "../../http";
 import './LoginForm.module.css';
+import { useNavigate } from 'react-router-dom';
 
 //import { withRouter } from "react-router-dom";
 
 function LoginForm(props) {
+
+    const navigate = useNavigate();
     const [state , setState] = useState({
         email : "",
         password : "",
@@ -29,6 +32,9 @@ axios
   .post(API_URL+'/api/auth/local', {
     identifier: state.email,
     password: state.password,
+  }, {
+    //AxiosRequestConfig parameter
+    withCredentials: true //correct
   })
   .then(response => {
      
@@ -36,8 +42,11 @@ axios
     console.log('Well done!');
     console.log('User profile', response.data.user);
     console.log('User token', response.data.jwt);
-    localStorage.setItem("JWT_REPORTS",response.data.jwt);
-     redirectToHome();
+    //localStorage.setItem("JWT_REPORTS",response.data.jwt);
+    console.log("toto cookies:", document.cookie);
+    navigate('/');
+    //return redirect("/");
+    // redirectToHome();
     // props.showError(null);
     
   })
@@ -52,11 +61,11 @@ axios
 
        
     }
-     const redirectToHome = () => {
-        //props.updateTitle('Home')
-        props.history.push('/');
-        window.location.reload();
-    } 
+    //  const redirectToHome = () => {
+    //     //props.updateTitle('Home')
+    //     props.history.push('/');
+    //     window.location.reload();
+    // } 
    
     return(
         <div className="container d-flex justify-content-center">

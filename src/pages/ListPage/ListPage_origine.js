@@ -11,8 +11,8 @@ export default function ListPage() {
 
 const [comments, setComments] = useState([]);
 const [loading, setLoading] = useState(false);
-const [commentisChecked, setCommentisChecked] = useState([]);
-const [commentsSelected, setCommentsSelected] = useState([]);
+// const [commentisChecked, setCommentisChecked] = useState([]);
+// const [commentsSelected, setCommentsSelected] = useState([]);
 
 useEffect(() => {
 
@@ -34,7 +34,7 @@ function addComment(comment) {
     setComments({
       ...comments,
       comment
-    }),
+    })
 }
 
 function deleteComment(id) {
